@@ -9,13 +9,13 @@ $(document).ready(function() {
         return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
     }
     
-    
+    var fixedRounding=3;
     console.log( "ready!" );
     $.getJSON('https://api1.tzscan.io/v1/marketcap',function (data)
     {     
         console.log(data);
         var price_usd=parseFloat(data[0].price_usd);
-         $("#price_usd").text(price_usd.toFixed(2));
+         $("#price_usd").text(price_usd.toFixed(fixedRounding));
          $("#price_btc").text(data[0].price_btc);
 
 
@@ -24,16 +24,16 @@ $(document).ready(function() {
              console.log(data);
              var balance=data.balance/1000000;
              var totalCapacity=balance * 12;
-             $("#Balance").text(parseFloat(balance).toFixed(2));
-             $("#BalanceUSD").text(formatNumber(parseFloat(price_usd*balance).toFixed(2)));
+             $("#Balance").text(parseFloat(balance).toFixed(fixedRounding));
+             $("#BalanceUSD").text(formatNumber(parseFloat(price_usd*balance).toFixed(fixedRounding)));
              
              $.getJSON('https://api2.tzscan.io/v1/staking_balance/'+DELEGATION_ADDRESS,function(data)
              {     
                  console.log(data);
                  var staking_balance=data[0]/1000000;
-                 $("#DelegatedTezos").text(parseFloat(staking_balance).toFixed(2));
-                 $("#DelegatedTezosUSD").text(formatNumber(parseFloat(staking_balance*price_usd).toFixed(2)));
-                 $("#AvailableCapacity").text(parseFloat(totalCapacity-staking_balance).toFixed(2));
+                 $("#DelegatedTezos").text(parseFloat(staking_balance).toFixed(fixedRounding));
+                 $("#DelegatedTezosUSD").text(formatNumber(parseFloat(staking_balance*price_usd).toFixed(fixedRounding)));
+                 $("#AvailableCapacity").text(parseFloat(totalCapacity-staking_balance).toFixed(fixedRounding));
                  return false;        
              });
              return false;        
