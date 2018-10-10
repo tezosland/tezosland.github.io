@@ -5,64 +5,45 @@ $(document).ready(function() {
 
     console.log(accountDetailsApiUrl);
     
-    $.getJSON(accountDetailsApiUrl,function(data)
-    {     
-        console.log(data);
-        var balance=data.balance/1000000;
-        var totalCapacity=balance * 12;
-        $("#Balance").text(parseFloat(balance).toFixed(2));
-        
-        
-        $.getJSON('https://api2.tzscan.io/v1/staking_balance/'+DELEGATION_ADDRESS,function(data)
-        {     
-            console.log(data);
-            var staking_balance=data[0]/1000000;
-            $("#AvailableCapacity").text(parseFloat(totalCapacity-staking_balance).toFixed(2));
-            return false;        
-        });
-        return false;        
-    });
-
+    function formatNumber (num) {
+        return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+    }
+    
     
     console.log( "ready!" );
     $.getJSON('https://api1.tzscan.io/v1/marketcap',function (data)
     {     
         console.log(data);
-         $("#price_usd").text(parseFloat(data[0].price_usd).toFixed(2));
+        var price_usd=parseFloat(data[0].price_usd);
+         $("#price_usd").text(price_usd.toFixed(2));
          $("#price_btc").text(data[0].price_btc);
+
+
+         $.getJSON(accountDetailsApiUrl,function(data)
+         {     
+             console.log(data);
+             var balance=data.balance/1000000;
+             var totalCapacity=balance * 12;
+             $("#Balance").text(parseFloat(balance).toFixed(2));
+             $("#BalanceUSD").text(formatNumber(parseFloat(price_usd*balance).toFixed(2)));
+             
+             $.getJSON('https://api2.tzscan.io/v1/staking_balance/'+DELEGATION_ADDRESS,function(data)
+             {     
+                 console.log(data);
+                 var staking_balance=data[0]/1000000;
+                 $("#DelegatedTezos").text(parseFloat(staking_balance).toFixed(2));
+                 $("#DelegatedTezosUSD").text(formatNumber(parseFloat(staking_balance*price_usd).toFixed(2)));
+                 $("#AvailableCapacity").text(parseFloat(totalCapacity-staking_balance).toFixed(2));
+                 return false;        
+             });
+             return false;        
+         });
+
+         
+
         return false;        
     });
-    //var rewardsSplit ='https://api6.tzscan.io/v1/rewards_split/?'+DELEGATION_ADDRESS+'cycle=26&p=0&number=10000';
-    //$.getJSON(rewardsSplit,function(data){
-    //    console.log(data);
-    //    return false;   
-   // });
+   
 });
 
-function ajaxMethodCall(requestType,postData,ajaxUrl, successFunction) {
-
-    $.ajax({
-        url: ajaxUrl,
-        type: requestType,
-        dataType: "jsonp",
-        success: successFunction,
-        error: function(jqXHR, exception) {
-            if (jqXHR.status === 0) {
-                console.error('Not connect.\n Verify Network.');
-            } else if (jqXHR.status == 404) {
-                console.error('Requested page not found. [404]');
-            } else if (jqXHR.status == 500) {
-                console.error('Internal Server Error [500].');
-            } else if (exception === 'parsererror') {
-                console.error('Requested JSON parse failed.');
-            } else if (exception === 'timeout') {
-                console.error('Time out error.');
-            } else if (exception === 'abort') {
-                console.error('Ajax request aborted.');
-            } else {
-                console.error('Uncaught Error.\n' + jqXHR.responseText);
-            }
-        }
-    });
-     
-}
+ 
