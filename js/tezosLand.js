@@ -24,14 +24,14 @@ $(document).ready(function() {
              console.log(data);
              var balance=data.balance/1000000;
              var totalCapacity=balance * 12;
-             $("#Balance").text(parseFloat(balance).toFixed(fixedRounding));
+             $("#Balance").text(formatNumber(parseFloat(balance).toFixed(fixedRounding)));
              $("#BalanceUSD").text(formatNumber(parseFloat(price_usd*balance).toFixed(fixedRounding)));
              
              $.getJSON('https://api2.tzscan.io/v1/staking_balance/'+DELEGATION_ADDRESS,function(data)
              {     
                  console.log(data);
                  var staking_balance=data[0]/1000000;
-                 $("#DelegatedTezos").text(parseFloat(staking_balance).toFixed(fixedRounding));
+                 $("#DelegatedTezos").text(formatNumber(parseFloat(staking_balance).toFixed(fixedRounding)));
                  $("#DelegatedTezosUSD").text(formatNumber(parseFloat(staking_balance*price_usd).toFixed(fixedRounding)));
               //   $("#AvailableCapacity").text(parseFloat(totalCapacity-staking_balance).toFixed(fixedRounding));
                  return false;        
