@@ -10,14 +10,14 @@ $(document).ready(function() {
         console.log(data);
         var balance=data.balance/1000000;
         var totalCapacity=balance * 12;
-        $("#Balance").text(balance);
+        $("#Balance").text(parseFloat(balance).toFixed(2));
         
         
         $.getJSON('https://api2.tzscan.io/v1/staking_balance/'+DELEGATION_ADDRESS,function(data)
         {     
             console.log(data);
             var staking_balance=data[0]/1000000;
-            $("#AvailableCapacity").text(totalCapacity-staking_balance);
+            $("#AvailableCapacity").text(parseFloat(totalCapacity-staking_balance).toFixed(2));
             return false;        
         });
         return false;        
@@ -28,7 +28,7 @@ $(document).ready(function() {
     $.getJSON('https://api1.tzscan.io/v1/marketcap',function (data)
     {     
         console.log(data);
-         $("#price_usd").text(data[0].price_usd);
+         $("#price_usd").text(parseFloat(data[0].price_usd).toFixed(2));
          $("#price_btc").text(data[0].price_btc);
         return false;        
     });
