@@ -5,17 +5,39 @@ $(document).ready(function() {
 
     console.log(accountDetailsApiUrl);
     
-    $.getJSON(accountDetailsApiUrl,DisplayBalance);
+    $.getJSON(accountDetailsApiUrl,function(data)
+    {     
+        console.log(data);
+        var balance=data.balance/1000000;
+        var totalCapacity=balance * 12;
+        $("#Balance").text(balance);
+        
+        
+        $.getJSON('https://api2.tzscan.io/v1/staking_balance/'+DELEGATION_ADDRESS,function(data)
+        {     
+            console.log(data);
+            var staking_balance=data[0]/1000000;
+            $("#AvailableCapacity").text(totalCapacity-staking_balance);
+            return false;        
+        });
+        return false;        
+    });
+
+    
     console.log( "ready!" );
-
-
+    $.getJSON('https://api1.tzscan.io/v1/marketcap',function (data)
+    {     
+        console.log(data);
+         $("#price_usd").text(data[0].price_usd);
+         $("#price_btc").text(data[0].price_btc);
+        return false;        
+    });
+    //var rewardsSplit ='https://api6.tzscan.io/v1/rewards_split/?'+DELEGATION_ADDRESS+'cycle=26&p=0&number=10000';
+    //$.getJSON(rewardsSplit,function(data){
+    //    console.log(data);
+    //    return false;   
+   // });
 });
-function DisplayBalance(data)
-{     
-    console.log(data);
-    $("#Balance").text(data.balance/1000000);
-    return false;        
-}
 
 function ajaxMethodCall(requestType,postData,ajaxUrl, successFunction) {
 
