@@ -11,6 +11,15 @@ $(document).ready(function() {
     
     var fixedRounding=3;
     console.log( "ready!" );
+
+    var cycleNumber=39;
+    var cyclePaging=500;
+    var cycleRewardsSplit='https://api1.tzscan.io/v1/rewards_split/tz1Z1tMai15JWUWeN2PKL9faXXVPMuWamzJj?cycle='+cycleNumber+'&p=0&number='+cyclePaging;
+    $.getJSON(cycleRewardsSplit,function (data)
+    {  
+         console.log( data);
+    });
+    
     $.getJSON('https://api1.tzscan.io/v1/marketcap',function (data)
     {     
         console.log(data);
@@ -40,6 +49,8 @@ $(document).ready(function() {
              });
              return false;        
          });
+
+
 
          
 
