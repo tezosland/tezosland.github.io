@@ -1,6 +1,43 @@
 const DELEGATION_ADDRESS ="tz1Z1tMai15JWUWeN2PKL9faXXVPMuWamzJj";
 $(document).ready(function() {
  
+    $( "#RewardsDistribution" ).click(function() {
+        GetRewards();
+      });
+
+      function GetRewards()
+      {
+        var cycle=39;
+        var pageNumber=100;
+        var rewardsSplit='https://api1.tzscan.io/v1/rewards_split/'+DELEGATION_ADDRESS+'?cycle='+cycle+'&p=0&number='+pageNumber;
+        $.getJSON(rewardsSplit,function(data)
+        {     
+            var future_blocks_rewards=data.future_blocks_rewards;
+            var future_endorsements_rewards = data.future_endorsements_rewards;
+            var people = []; 
+            $.each(data.delegators_balance, function (index, value) {
+                var tzAddress=value[0];
+                var tzAddressBalance=value[1];
+                console.log(tzAddressBalance+" "+tzAddress.tz);
+                var person = {
+                    TzAddress: value[0].tz,
+                    TzAddressBalance: value[1]
+                };
+                people.push(person);
+              });
+            console.log(data);
+            
+
+        //    var obj = {people: JSON.parse(text)};
+          
+            var template = $('#personTpl').html();
+            var html = Mustache.to_html(template, {people:people,future_blocks_rewards,future_endorsements_rewards});
+            $('#sampleArea').html(html);
+
+            return false;        
+        });
+      }
+
     var accountDetailsApiUrl ='https://api1.tzscan.io/v1/node_account/'+DELEGATION_ADDRESS;
 
     console.log(accountDetailsApiUrl);
@@ -12,13 +49,7 @@ $(document).ready(function() {
     var fixedRounding=3;
     console.log( "ready!" );
 
-    var cycleNumber=39;
-    var cyclePaging=500;
-    var cycleRewardsSplit='https://api1.tzscan.io/v1/rewards_split/tz1Z1tMai15JWUWeN2PKL9faXXVPMuWamzJj?cycle='+cycleNumber+'&p=0&number='+cyclePaging;
-    $.getJSON(cycleRewardsSplit,function (data)
-    {  
-         console.log( data);
-    });
+  
     
     $.getJSON('https://api1.tzscan.io/v1/marketcap',function (data)
     {     
@@ -56,7 +87,7 @@ $(document).ready(function() {
 
         return false;        
     });
-   
+    
 });
 
  
