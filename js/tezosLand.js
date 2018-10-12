@@ -31,6 +31,7 @@ $(document).ready(function() {
              {     
                  console.log(data);
                  var staking_balance=data[0]/1000000;
+                 
                  var delegatedBalance = staking_balance-balance;
                  $("#DelegatedTezos").text(formatNumber(parseFloat(delegatedBalance).toFixed(fixedRounding)));
                  $("#DelegatedTezosUSD").text(formatNumber(parseFloat(delegatedBalance*price_usd).toFixed(fixedRounding)));
