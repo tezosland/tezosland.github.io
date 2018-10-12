@@ -31,8 +31,9 @@ $(document).ready(function() {
              {     
                  console.log(data);
                  var staking_balance=data[0]/1000000;
-                 $("#DelegatedTezos").text(formatNumber(parseFloat(staking_balance).toFixed(fixedRounding)));
-                 $("#DelegatedTezosUSD").text(formatNumber(parseFloat(staking_balance*price_usd).toFixed(fixedRounding)));
+                 var delegatedBalance = staking_balance-balance;
+                 $("#DelegatedTezos").text(formatNumber(parseFloat(delegatedBalance).toFixed(fixedRounding)));
+                 $("#DelegatedTezosUSD").text(formatNumber(parseFloat(delegatedBalance*price_usd).toFixed(fixedRounding)));
               //   $("#AvailableCapacity").text(parseFloat(totalCapacity-staking_balance).toFixed(fixedRounding));
                  return false;        
              });
