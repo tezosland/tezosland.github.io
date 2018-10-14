@@ -25,10 +25,13 @@
     <meta content="blue" name="theme-color">
     <!-- Custom styles for this template -->
     <link href="css/agency.min.css" rel="stylesheet">  
-    <script src="js/tezosLand.js"></script>
+
     <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
     <link rel="manifest" href="/manifest.json">
     <script src="js/mustache.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script src="js/tezosLand.js"></script>
   </head>
 
   <body id="page-top">
@@ -181,17 +184,19 @@
 
            
          
-                <table class='table table-bordered table-striped table-sm'>
-                  <thead class="table-dark">
-                    <th>
-
-                    </th>
-                    <th>
-                      Delegated Tezos Address
-                    </th>
-                    <th>
-                      Balance
-                    </th>
+                <table class='table table-bordered table-sm' id='DelegationAccountHtmlTable'>
+                  <thead>
+                    <tr>
+                        <th>
+                            Index
+                                            </th>
+                                            <th>
+                                              Delegated Tezos Address
+                                            </th>
+                                            <th>
+                                              Balance
+                                            </th>
+                    </tr>
                   </thead>
                   <tbody id='delegatedAccountDetailCntArea'>
                   </tbody>
@@ -202,10 +207,20 @@
               
 
             <script id="delegatedAccountDetailCnt" type="text/template">
-                  {{#Delegation}}   <tr id='{{type.source.tz}}'></tr>     {{/Delegation}}
+            {{#Delegation}}     
+     
+            {{#type.source.IsDelegatedAccount}}
+            <tr id='{{type.source.tz}}'></tr>  
+          {{/type.source.IsDelegatedAccount}}
+      
+  
+
+         
+
+              {{/Delegation}}
               </script>
               <script id="delegatedAccountDetail" type="text/template">
-                {{^IsMainAccount}}
+            
             
                    <td class="text-center">
                     {{TzAddressIndex}}  
@@ -219,7 +234,7 @@
                       {{TzAddressBalance}} ꜩ
                  </td> 
             
-                {{/IsMainAccount}}
+          
                 </script>
 
           </div>
@@ -425,6 +440,10 @@
   gtag('js', new Date());
 
   gtag('config', 'UA-127424289-1');
+
+  $(document).ready( function () {
+    setTimeout(function() {       $('#DelegationAccountHtmlTable').DataTable();}, 1000);
+} );
 </script>
 
   </body>

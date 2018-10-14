@@ -117,14 +117,25 @@ catch(err) {
       var apiOriginations_delegate= 'https://api6.tzscan.io/v1/operations/'+DELEGATION_ADDRESS+'?type=Delegation&p=0&number=200'
       $.getJSON(apiOriginations_delegate,function(data)
       {     
+          var totalDelegatedAccount=data.length;
           var delegatedList  = new Array();
- data.reverse();
+          data.reverse();
+          $.each(data, function (index, value) { 
+            value.type.source['IsDelegatedAccount'] = !(value.type.source.tz === DELEGATION_ADDRESS);
+          });
+
           var html2 = Mustache.to_html(delegatedAccountDetailCntTemplate,{Delegation:data});
+
           $('#delegatedAccountDetailCntArea').html(html2);
+
           $.each(data, function (index, value) {
+
                  var delegatedSource=value.type.source.tz;
+  
                  var delegatedSourceApiUrl ='https://api1.tzscan.io/v1/node_account/'+delegatedSource;
                  var delegatedSourceBalance='';
+                
+
                  $.getJSON(delegatedSourceApiUrl,function(delegatedSourceData){
                         console.log(delegatedSourceData);
                         var addressBalance=delegatedSourceData.balance/1000000;
@@ -132,18 +143,16 @@ catch(err) {
                         var MustacheData = {
                             TzAddress: delegatedSourceData.name.tz,
                             TzAddressBalance:formattedBalance ,
-                            IsMainAccount:  delegatedSourceData.name.tz === DELEGATION_ADDRESS,
                             TzAddressIndex:index+1
                         };
                         var html = Mustache.to_html(template, MustacheData);
                         $('#'+ delegatedSourceData.name.tz).html(html);
                  });
                
-             
-                 
+                
            });
 
-        
+    
           console.log(data);
           
           return false;        
