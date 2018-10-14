@@ -28,6 +28,7 @@
     <script src="js/tezosLand.js"></script>
     <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
     <link rel="manifest" href="/manifest.json">
+    <script src="js/mustache.js"></script>
   </head>
 
   <body id="page-top">
@@ -172,8 +173,63 @@
             </div>
           </div>
         </div>
+        <br>
+        <div class="row">
+      
+          <div class="col-md-8 offset-md-3">
+     
+              <div class="row">
+                  <div class="col-md-1  text-center bg-dark  text-light">
+                       
+                </div>
+                  <div  class="col-md-4 bg-dark  text-light">
+                    Delegated Tezos Address
+                  </div>
+                <div class="col-md-3 text-center bg-dark text-light">
+                     Balance
+                  </div>
+                
+              </div>
+          
+              <span id='delegatedAccountDetailCntArea'>
+                </span>
+            
+                <span id='delegatedAccountDetailArea'></span>
+              
+
+            <script id="delegatedAccountDetailCnt" type="text/template">
+                  {{#Delegation}}   <div id='{{type.source.tz}}'></div>     {{/Delegation}}
+              </script>
+              <script id="delegatedAccountDetail" type="text/template">
+                {{^IsMainAccount}}
+                <div class="row">    
+                   <div class="col-md-1  text-center">
+                    {{TzAddressIndex}}  
+                  </div>
+                 <div class="col-md-4   text-uppercase ">
+                    <a target='_blank' class="text-uppercase text-dark btn-link btn" href='https://tzscan.io/{{TzAddress}}'>
+                        {{TzAddress}}  
+                    </a>
+                </div>
+                <div class="col-md-3 text-center">
+                      {{TzAddressBalance}} ꜩ
+                 </div> 
+                </div>
+                {{/IsMainAccount}}
+                </script>
+
+          </div>
+        </div>
     </section>
+    
+
+         
   
+ 
+
+    <script id="personDelegatedAccountDetail" type="text/template">
+      {{#people}}<b>TzAddress:{{TzAddress}} </b>  TzAddressBalance: {{TzAddressBalance}} <br> {{/people}}
+      </script>
 
     <!-- Services -->
     <section id="services">

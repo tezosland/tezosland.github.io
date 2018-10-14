@@ -2,9 +2,18 @@ const DELEGATION_ADDRESS ="tz1Z1tMai15JWUWeN2PKL9faXXVPMuWamzJj";
 $(document).ready(function() {
  
     $( "#RewardsDistribution" ).click(function() {
-        GetRewards();
+
+  
+try {
+    GetRewards();
+}
+catch(err) {
+   console.log(err.message);
+}
       });
 
+
+      
       function GetRewards()
       {
         var cycle=39;
@@ -49,45 +58,101 @@ $(document).ready(function() {
     var fixedRounding=3;
     console.log( "ready!" );
 
-  
+
+
+    try {
+        GetNodeDetailData();
+    }
+    catch(err) {
+       console.log(err.message);
+    }
+
+    function GetNodeDetailData(){
+        $.getJSON('https://api1.tzscan.io/v1/marketcap',function (data)
+        {     
+            console.log(data);
+            var price_usd=parseFloat(data[0].price_usd);
+             $("#price_usd").text(price_usd.toFixed(fixedRounding));
+             $("#price_btc").text(data[0].price_btc);
     
-    $.getJSON('https://api1.tzscan.io/v1/marketcap',function (data)
-    {     
-        console.log(data);
-        var price_usd=parseFloat(data[0].price_usd);
-         $("#price_usd").text(price_usd.toFixed(fixedRounding));
-         $("#price_btc").text(data[0].price_btc);
-
-
-         $.getJSON(accountDetailsApiUrl,function(data)
-         {     
-             console.log(data);
-             var balance=data.balance/1000000;
-             var totalCapacity=balance * 12;
-             $("#Balance").text(formatNumber(parseFloat(balance).toFixed(fixedRounding)));
-             $("#BalanceUSD").text(formatNumber(parseFloat(price_usd*balance).toFixed(fixedRounding)));
-             
-             $.getJSON('https://api2.tzscan.io/v1/staking_balance/'+DELEGATION_ADDRESS,function(data)
+    
+             $.getJSON(accountDetailsApiUrl,function(data)
              {     
                  console.log(data);
-                 var staking_balance=data[0]/1000000;
+                 var balance=data.balance/1000000;
+                 var totalCapacity=balance * 12;
+                 $("#Balance").text(formatNumber(parseFloat(balance).toFixed(fixedRounding)));
+                 $("#BalanceUSD").text(formatNumber(parseFloat(price_usd*balance).toFixed(fixedRounding)));
                  
-                 var delegatedBalance = staking_balance-balance;
-                 $("#DelegatedTezos").text(formatNumber(parseFloat(delegatedBalance).toFixed(fixedRounding)));
-                 $("#DelegatedTezosUSD").text(formatNumber(parseFloat(delegatedBalance*price_usd).toFixed(fixedRounding)));
-              //   $("#AvailableCapacity").text(parseFloat(totalCapacity-staking_balance).toFixed(fixedRounding));
+                 $.getJSON('https://api2.tzscan.io/v1/staking_balance/'+DELEGATION_ADDRESS,function(data)
+                 {     
+                     console.log(data);
+                     var staking_balance=data[0]/1000000;
+                     
+                     var delegatedBalance = staking_balance-balance;
+                     $("#DelegatedTezos").text(formatNumber(parseFloat(delegatedBalance).toFixed(fixedRounding)));
+                     $("#DelegatedTezosUSD").text(formatNumber(parseFloat(delegatedBalance*price_usd).toFixed(fixedRounding)));
+                  //   $("#AvailableCapacity").text(parseFloat(totalCapacity-staking_balance).toFixed(fixedRounding));
+                     
+                  
+                    return false;  
+                 });
                  return false;        
              });
-             return false;        
-         });
+
+            return false;        
+        });
+        try {
+            GetEachDelegatedAccountDetail();
+        }
+        catch(err) {
+           console.log(err.message);
+        }
+    }
+   
+  function GetEachDelegatedAccountDetail(){
+
+      var template = $('#delegatedAccountDetail').html();
+      var delegatedAccountDetailCntTemplate = $('#delegatedAccountDetailCnt').html();
+      var apiOriginations_delegate= 'https://api6.tzscan.io/v1/operations/'+DELEGATION_ADDRESS+'?type=Delegation&p=0&number=200'
+      $.getJSON(apiOriginations_delegate,function(data)
+      {     
+          var delegatedList  = new Array();
+ data.reverse();
+          var html2 = Mustache.to_html(delegatedAccountDetailCntTemplate,{Delegation:data});
+          $('#delegatedAccountDetailCntArea').html(html2);
+          $.each(data, function (index, value) {
+                 var delegatedSource=value.type.source.tz;
+                 var delegatedSourceApiUrl ='https://api1.tzscan.io/v1/node_account/'+delegatedSource;
+                 var delegatedSourceBalance='';
+                 $.getJSON(delegatedSourceApiUrl,function(delegatedSourceData){
+                        console.log(delegatedSourceData);
+                        var addressBalance=delegatedSourceData.balance/1000000;
+                        var formattedBalance=formatNumber(parseFloat(addressBalance).toFixed(2))
+                        var MustacheData = {
+                            TzAddress: delegatedSourceData.name.tz,
+                            TzAddressBalance:formattedBalance ,
+                            IsMainAccount:  delegatedSourceData.name.tz === DELEGATION_ADDRESS,
+                            TzAddressIndex:index+1
+                        };
+                        var html = Mustache.to_html(template, MustacheData);
+                        $('#'+ delegatedSourceData.name.tz).html(html);
+                 });
+               
+             
+                 
+           });
+
+        
+          console.log(data);
+          
+          return false;        
+      });
 
 
+  }
 
-         
-
-        return false;        
-    });
-    
+  
 });
 
  
