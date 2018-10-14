@@ -176,45 +176,49 @@
         <br>
         <div class="row">
       
-          <div class="col-md-8 offset-md-3">
+          <div class="col-md-8 offset-md-2">
      
-              <div class="row">
-                  <div class="col-md-1  text-center bg-dark  text-light">
-                       
-                </div>
-                  <div  class="col-md-4 bg-dark  text-light">
-                    Delegated Tezos Address
-                  </div>
-                <div class="col-md-3 text-center bg-dark text-light">
-                     Balance
-                  </div>
-                
+
+           
+         
+                <table class='table table-bordered table-striped table-sm'>
+                  <thead class="table-dark">
+                    <th>
+
+                    </th>
+                    <th>
+                      Delegated Tezos Address
+                    </th>
+                    <th>
+                      Balance
+                    </th>
+                  </thead>
+                  <tbody id='delegatedAccountDetailCntArea'>
+                  </tbody>
+                </table>
+             
               </div>
-          
-              <span id='delegatedAccountDetailCntArea'>
-                </span>
-            
                 <span id='delegatedAccountDetailArea'></span>
               
 
             <script id="delegatedAccountDetailCnt" type="text/template">
-                  {{#Delegation}}   <div id='{{type.source.tz}}'></div>     {{/Delegation}}
+                  {{#Delegation}}   <tr id='{{type.source.tz}}'></tr>     {{/Delegation}}
               </script>
               <script id="delegatedAccountDetail" type="text/template">
                 {{^IsMainAccount}}
-                <div class="row">    
-                   <div class="col-md-1  text-center">
+            
+                   <td class="text-center">
                     {{TzAddressIndex}}  
-                  </div>
-                 <div class="col-md-4   text-uppercase ">
+                  </td>
+                 <td class="text-uppercase ">
                     <a target='_blank' class="text-uppercase text-dark btn-link btn" href='https://tzscan.io/{{TzAddress}}'>
                         {{TzAddress}}  
                     </a>
-                </div>
-                <div class="col-md-3 text-center">
+                </td>
+                <td class="text-center">
                       {{TzAddressBalance}} ꜩ
-                 </div> 
-                </div>
+                 </td> 
+            
                 {{/IsMainAccount}}
                 </script>
 
