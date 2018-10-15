@@ -67,9 +67,9 @@
     <header class="masthead">
       <div class="container">
         <div class="intro-text">
-          <div class="intro-lead-in">Welcome To Tezos Land</div>
-          <div class="subheading">Reliable and low fee baking service for your Tezos</div>
-          <a class="btn btn-link  btn-xl text-uppercase js-scroll-trigger" href="#services">More About Baking Service</a>
+          <div class="intro-lead-in text-dark">Welcome To Tezos Land</div>
+          <div class="subheading text-dark">Reliable and low fee baking service for your Tezos</div>
+          <a class="btn btn-link  btn-xl text-uppercase text-dark js-scroll-trigger" href="#services">More About Baking Service</a>
         </div>
       </div>
     </header>
@@ -99,33 +99,40 @@
                     
                     </table>
                 </div>
+              </div>
+              <div class="row">
                 <div class="col-md-6 offset-md-3 text-center">
                     <a class="text-uppercase text-dark btn-link btn" href='https://tzscan.io/tz1Z1tMai15JWUWeN2PKL9faXXVPMuWamzJj'>
                       Visit to Our Baking Service on TzScan.IO
                       </a>
                 </div>
+              </div>
+              <div class="row">
                 <div class="col-md-12 ">
-                   
-                    
-                        <div class="card bg-light" >
-                            <div class="card-header text-uppercase text-center">Tezos Land DELEGATION ADDRESS</div>
-                            <div class="card-body  ">
-                              <p class="card-text text-center text-danger"> <span   style="font-size:xx-large">tz1Z1tMai15JWUWeN2PKL9faXXVPMuWamzJj </span> </p>
-                            </div>
-                          </div>
-                           
-                          <div>
-
+              
+              
+                  <div class="card bg-light">
+                    <div class="card-header text-uppercase text-center">Tezos Land DELEGATION ADDRESS</div>
+                    <div class="card-body  ">
+                      <p class="card-text text-center text-danger"> <span style="font-size:xx-large">tz1Z1tMai15JWUWeN2PKL9faXXVPMuWamzJj
+                        </span> </p>
+                    </div>
+                  </div>
+              
+                  <div>
+              
                     <a target="_blank" class="btn-link btn" href='https://www.youtube.com/watch?v=eD-y1cEwB94'>
-                     Importing a fundraiser wallet
-                      </a>    
-                      <a target="_blank" class="btn-link btn" href='https://www.youtube.com/watch?v=C6-lEA3HAec'>
+                      Importing a fundraiser wallet
+                    </a>
+                    <a target="_blank" class="btn-link btn" href='https://www.youtube.com/watch?v=C6-lEA3HAec'>
                       How to delegate your Tez using Galleon wallet.
-                      </a>  
-                          </div>
-                       
+                    </a>
+                  </div>
+              
                 </div>
-                <div class="col-lg-12 text-center">
+              </div>
+              <div class="row">
+                <div class="col-lg-12 text-center"> 
                     <table class='table table-bordered table-sm'>
                       <tbody>
                         <tr>
@@ -156,86 +163,23 @@
                       </tbody>
     
                     </table>
-               
-            
-     
-                 
-          </div>
+                  </div>
+                </div>
          
-    
-        </div>
         <div class="row">
             <div class="col-md-12 text-center">
                 <a class="text-dark " href="mailto:support@tezosland.com">CONTACT US FOR ANY QUESTIONS OR CONCERNS ABOUT OUR BAKING SERVICE</a>
             </div>
           </div>
-        </div>
         <div class="row">
             <div class="col-md-12 text-center">
                 <a class="text-dark " href="mailto:support@tezosland.com?subject=Slack Invitation&body=Thank you for joining our TezosLand community$0A$0AYour Email Address:$0ATezos Address:">Join our slack community, Send email to get invitation</a>
             </div>
           </div>
-        </div>
-        <br>
-        <div class="row">
-      
-          <div class="col-md-6 offset-md-3">
-      
-         
-                <table class='table table-bordered table-hover  table-striped table-sm' id='DelegationAccountHtmlTable'>
-                  <thead class="table-dark text-center">
-                    <tr>
-                        <th>
-                            Index
-                                            </th>
-                                            <th>
-                                              Delegated Tezos Address
-                                            </th>
-                                            <th>
-                                              Balance
-                                            </th>
-                    </tr>
-                  </thead>
-                  <tbody id='delegatedAccountDetailCntArea'>
-                  </tbody>
-                </table>
-             
-              </div>
-                <span id='delegatedAccountDetailArea'></span>
-              
-
-            <script id="delegatedAccountDetailCnt" type="text/template">
-            {{#Delegation}}     
+       
+       
      
-            {{#type.source.IsDelegatedAccount}}
-            <tr id='{{type.source.tz}}'></tr>  
-          {{/type.source.IsDelegatedAccount}}
-      
-  
-
-         
-
-              {{/Delegation}}
-              </script>
-              <script id="delegatedAccountDetail" type="text/template">
-            
-            
-                   <td class="text-center">
-                    {{TzAddressIndex}}  
-                  </td>
-                 <td class="text-uppercase ">
-                    <a target='_blank' class="text-uppercase text-dark btn-link btn" href='https://tzscan.io/{{TzAddress}}'>
-                        {{TzAddress}}  
-                    </a>
-                </td>
-                <td class="text-center">
-                      {{TzAddressBalance}} ꜩ
-                 </td> 
-            
-          
-                </script>
-
-          </div>
+       
         </div>
     </section>
     
