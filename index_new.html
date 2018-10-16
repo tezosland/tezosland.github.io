@@ -24,7 +24,7 @@
     <script src="vendor/jquery/jquery.min.js"></script>
     <meta content="blue" name="theme-color">
     <!-- Custom styles for this template -->
-    <link href="css/agency.min.css" rel="stylesheet">  
+    <link href="css/agency.css" rel="stylesheet">  
 
     <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
     <link rel="manifest" href="/manifest.json">
@@ -73,116 +73,20 @@
         </div> 
       </div>
     </header>
-    <section id='tezosLand'>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 offset-md-3">
-                    <table class='table table-hover table-bordered table-striped'>
-                      <thead>
-                        <th>
-                            Tezos Price in USD:  
-                        </th>
-                        <th>
-                            Tezos Price in BTC:
-                        </th>
-                      </thead>
-                      <tbody>
-                          <tr>
-                           <td>
-                              $<span id='price_usd'></span> 
-                           </td>  
-                           <td>
-                              <span id='price_btc'></span> 
-                           </td> 
-                            </tr>
-                      </tbody>
-                    
-                    </table>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6 offset-md-3 text-center">
-                    <a class="text-uppercase text-dark btn-link btn" href='https://tzscan.io/tz1Z1tMai15JWUWeN2PKL9faXXVPMuWamzJj'>
-                      Visit to Our Baking Service on TzScan.IO
-                      </a>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12 ">
-              
-              
-                  <div class="card bg-light">
-                    <div class="card-header text-uppercase text-center">Tezos Land DELEGATION ADDRESS</div>
-                    <div class="card-body  ">
-                      <p class="card-text text-center text-danger"> <span style="font-size:xx-large">tz1Z1tMai15JWUWeN2PKL9faXXVPMuWamzJj
-                        </span> </p>
-                    </div>
-                  </div>
-              
-                  <div>
-              
-                    <a target="_blank" class="btn-link btn" href='https://www.youtube.com/watch?v=eD-y1cEwB94'>
-                      Importing a fundraiser wallet
-                    </a>
-                    <a target="_blank" class="btn-link btn" href='https://www.youtube.com/watch?v=C6-lEA3HAec'>
-                      How to delegate your Tez using Galleon wallet.
-                    </a>
-                  </div>
-              
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-12 text-center"> 
-                    <table class='table table-bordered table-sm'>
-                      <tbody>
-                        <tr>
-                            <td class="table-dark">
-                              TezosLand Security Deposit Balance
-                          </td>
-                          <td>
-                              <span id='Balance'></span> XTZ   ($<span id='BalanceUSD'></span>)
-                          </td>
-                        </tr>
-                        <tr>
-                            <td class="table-dark">
-                                Total Delegated Tezos
-                            </td>
-                            <td>
-                                <span id='DelegatedTezos'></span> XTZ   ($<span id='DelegatedTezosUSD'></span>) 
-                            </td>
-                          </tr>
-                          <tr>
-                              <td class="table-dark">
-                                  TezosLand Baking Rewards Distribution
-                              </td>
-                              <td>
-                                  <span>95.5%</span> rewards to YOU  <br>  <span>4.5%</span> for baking fee   
-                              </td>
-                            </tr>
-
-                      </tbody>
     
-                    </table>
-                  </div>
-                </div>
-         
+    
+	<section class="bg-info" id="tezosLand">
+      <div class="container">
         <div class="row">
-            <div class="col-md-12 text-center">
-                <a class="text-dark " href="mailto:support@tezosland.com">CONTACT US FOR ANY QUESTIONS OR CONCERNS ABOUT OUR BAKING SERVICE</a>
-            </div>
+          <div class="col-lg-8 mx-auto text-center">
+            <h2 class="section-heading text-white">Tezos Land Delegation Address</h2>
+            <hr class="light my-4">
+            <h4 class="text-dark mb-4 text-monospace font-weight-bold">tz1Z1tMai15JWUWeN2PKL9faXXVPMuWamzJj</h4>
+            <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Questions?</a>
           </div>
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <a class="text-dark " href="mailto:support@tezosland.com?subject=Slack Invitation Request&body=Please send me an invite link.">Join our slack community, Send email to get invitation</a>
-            </div>
-          </div>
-       
-       
-     
-       
         </div>
+      </div>
     </section>
-    
 
          
   
@@ -228,7 +132,21 @@
     
     </section>
 
-
+	
+	<section class="bg-secondary" id="stats">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">
+            <h2 class="section-heading text-dark">Stats and Information</h2>
+            <hr class="light my-4">
+            <span class="text-dark mb-4 text-monospace font-weight-bold">TezosLand Security Deposit Balance XTZ</span><p id='BalanceUSD'></p>
+			<span class="text-dark mb-4 text-monospace font-weight-bold">Total Delegated Tezos</span><p id='DelegatedTezosUSD'></p>
+			<span class="text-dark mb-4 text-monospace font-weight-bold">TezosLand Baking Rewards Distribution</span> <p>95.5% rewards to YOU; 4.5% for baking fee</p>  
+          </div>
+        </div>
+      </div>
+    </section>
+	
     <section id="FAQ">
         <div class="container">
           <div class="row">
@@ -320,42 +238,37 @@
   
 
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
       <div class="container">
         <div class="row">
           <div class="col-md-2">
-            <a target="_blank" class="text-dark" href='https://tzscan.io/tz1Z1tMai15JWUWeN2PKL9faXXVPMuWamzJj?default=rewards'>Tezos Land Rewards </a>      
+            <a target="_blank" class="text-light" href='https://tzscan.io/tz1Z1tMai15JWUWeN2PKL9faXXVPMuWamzJj?default=rewards'>Tezos Land Rewards </a>      
           </div>
           <div class="col-md-2">
-              <a target="_blank" class="text-dark"  href='https://tzscan.io/tz1Z1tMai15JWUWeN2PKL9faXXVPMuWamzJj?default=baking'> Tezos Land Baking </a>    
+              <a target="_blank" class="text-light"  href='https://tzscan.io/tz1Z1tMai15JWUWeN2PKL9faXXVPMuWamzJj?default=baking'>Tezos Land Baking </a>    
             </div>
-  
 
-          <div class="col-md-1">
-              <a target="_blank" class="text-dark"  href='https://tzscan.io'>
-                  TzScan.IO
-              </a>
-          </div>
           <div class="col-md-2">
-              <a target="_blank" class="text-dark"  href='https://tezos.foundation/'>
-                 Tezos Foundation
-              </a>
-          </div>
-          <div class="col-md-2">
-        
-              <a target="_blank" class="text-dark"  href='https://reddit.com/r/tezos'>
+              <a target="_blank" class="text-light"  href='https://www.reddit.com/user/TezosLand'>
                  Reddit
               </a>
-              <a target="_blank" class="text-dark"  href='https://twitter.com/TezosFoundation'>
+          </div>
+		  
+		  <div class="col-md-2">
+              <a target="_blank" class="text-light"  href='https://twitter.com/LandTezos'>
                 Twitter
              </a>
-             <a target="_blank" class="text-dark"  href='https://www.youtube.com/channel/UCMeXYClRGsIfqS_sqMeolqQ'>
-              Youtube
-           </a>
+
           </div>
         </div>
       </div>
     </footer>
+	
+	<div class="copyright py-4 text-center text-white">
+      <div class="container">
+        <small>Copyright © Tezosland.com 2018</small>
+      </div>
+    </div>
 
     <!-- Portfolio Modals -->
 
