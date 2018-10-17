@@ -20,8 +20,14 @@
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
 
     <script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script defer src="https://use.fontawesome.com/releases/v5.4.1/js/all.js" integrity="sha384-L469/ELG4Bg9sDQbl0hvjMq8pOcqFgkSpwhwnslzvVVGpDjYJ6wJJyYjvG3u8XW7" crossorigin="anonymous"></script>
+
+
     <meta content="blue" name="theme-color">
     <!-- Custom styles for this template -->
     <link href="css/agency.css" rel="stylesheet">  
@@ -56,7 +62,9 @@
             <li class="nav-item">
                 <a class="nav-link js-scroll-trigger" href="#FAQ">FAQ</a>
               </li>
-            
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+              </li>
             
           </ul>
         </div>
@@ -81,7 +89,9 @@
           <div class="col-lg-8 mx-auto text-center">
             <h2 class="section-heading text-white">Tezos Land Delegation Address</h2>
             <hr class="light my-4">
-            <h4 class="text-dark mb-4 text-monospace font-weight-bold">tz1Z1tMai15JWUWeN2PKL9faXXVPMuWamzJj</h4>
+            <p><input type="text" class="text-dark mb-4 text-monospace font-weight-bold" value="tz1Z1tMai15JWUWeN2PKL9faXXVPMuWamzJj" disabled="true" onselect="document.execCommand('copy');$('#copyp').show()" style="border: none; background: transparent;border-color: transparent;" size="36"></input></p>
+			<p id="copyp" class="text-primary" style="display: none;">Copied!</p>
+			
             <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Questions?</a>
           </div>
         </div>
@@ -142,6 +152,7 @@
             <span class="text-dark mb-4 text-monospace font-weight-bold">TezosLand Security Deposit Balance XTZ</span><p id='BalanceUSD'></p>
 			<span class="text-dark mb-4 text-monospace font-weight-bold">Total Delegated Tezos</span><p id='DelegatedTezosUSD'></p>
 			<span class="text-dark mb-4 text-monospace font-weight-bold">TezosLand Baking Rewards Distribution</span> <p>95.5% rewards to YOU; 4.5% for baking fee</p>  
+			<span class="text-dark mb-4 text-monospace font-weight-bold">For More Information</span> <p><a target="blank" class="text-dark" href="https://tzscan.io/tz1Z1tMai15JWUWeN2PKL9faXXVPMuWamzJj"> Visit to Our Baking Service on TzScan.IO </a></p>  
           </div>
         </div>
       </div>
@@ -226,49 +237,75 @@
                     <div class="timeline-image">
                         <a class="nav-link js-scroll-trigger" href="#tezosLand"> <img class=" img-fluid" src="img/about/delegate.png" alt=""></a>
                       </div>
-                      
-                  
                 </li>
               </ul>
             </div>
           </div>
         </div>
       </section>
-
+	
+	<section id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">
+            <h2 class="section-heading">Let's Get In Touch!</h2>
+            <hr class="my-4">
+            <p class="mb-5">Do you need more information ? We are here to answer! Use one of the channels to reach us!</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 ml-auto text-center">
+            <i class="fab fa-twitter fa-3x mb-3 sr-contact-1" style="visibility: visible;"></i>
+            <p><a href="https://twitter.com/LandTezos" target="_blank" class="text-dark">Twitter</a></p>
+          </div>
+		  <div class="col-lg-3 ml-auto text-center">
+            <i class="fab fa-slack-hash fa-3x mb-3 sr-contact-1" style="visibility: visible;"></i>
+            <p>
+			<a href="mailto:support@tezosland.com?subject=Slack Invitation Request&amp;body=Please send me an invite link." class="text-dark">Slack Invite</a>
+			</p>
+          </div>
+          <div class="col-lg-3 mr-auto text-center">
+            <i class="fas fa-envelope fa-3x mb-3 sr-contact-2" style="visibility: visible;"></i>
+            <p>
+              <a href="mailto:support@tezosland.com" class="text-dark">support@tezosland.com</a>
+            </p>
+          </div>
+		  
+		   <div class="col-lg-3 mr-auto text-center">
+            <i class="fab fa-reddit-alien fa-3x mb-3 sr-contact-2" style="visibility: visible;"></i>
+            <p>
+              <a href="https://www.reddit.com/user/TezosLand" class="text-dark" target="_blank">Reddit</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="bg-dark">
       <div class="container">
         <div class="row">
-          <div class="col-md-2">
-            <a target="_blank" class="text-light" href='https://tzscan.io/tz1Z1tMai15JWUWeN2PKL9faXXVPMuWamzJj?default=rewards'>Tezos Land Rewards </a>      
+          <div class="col-md-4">
+            <span class="text-light">Copyright © Tezosland.com 2018</span>
           </div>
-          <div class="col-md-2">
-              <a target="_blank" class="text-light"  href='https://tzscan.io/tz1Z1tMai15JWUWeN2PKL9faXXVPMuWamzJj?default=baking'>Tezos Land Baking </a>    
-            </div>
-
-          <div class="col-md-2">
-              <a target="_blank" class="text-light"  href='https://www.reddit.com/user/TezosLand'>
-                 Reddit
-              </a>
+          <div class="col-md-4">
+            <ul class="list-inline social-buttons">
+            </ul>
           </div>
-		  
-		  <div class="col-md-2">
-              <a target="_blank" class="text-light"  href='https://twitter.com/LandTezos'>
-                Twitter
-             </a>
-
+          <div class="col-md-4">
+            <ul class="list-inline quicklinks">
+              <li class="list-inline-item">
+                <a href="privacy_policy.html" target="_blank">Privacy Policy</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="terms.html" target="_blank">Terms of Use</a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
     </footer>
-	
-	<div class="copyright py-4 text-center text-white">
-      <div class="container">
-        <small>Copyright © Tezosland.com 2018</small>
-      </div>
-    </div>
 
     <!-- Portfolio Modals -->
 
@@ -285,7 +322,7 @@
     <script src="js/contact_me.js"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="js/agency.min.js"></script>
+    <script src="js/agency.js"></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127424289-1"></script>
