@@ -20,17 +20,11 @@
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-
 
     <script src="vendor/jquery/jquery.min.js"></script>
-	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-	<script defer src="https://use.fontawesome.com/releases/v5.4.1/js/all.js" integrity="sha384-L469/ELG4Bg9sDQbl0hvjMq8pOcqFgkSpwhwnslzvVVGpDjYJ6wJJyYjvG3u8XW7" crossorigin="anonymous"></script>
-
-
     <meta content="blue" name="theme-color">
     <!-- Custom styles for this template -->
-    <link href="css/agency.css" rel="stylesheet">  
+    <link href="css/agency.min.css" rel="stylesheet">  
 
     <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
     <link rel="manifest" href="/manifest.json">
@@ -62,9 +56,7 @@
             <li class="nav-item">
                 <a class="nav-link js-scroll-trigger" href="#FAQ">FAQ</a>
               </li>
-            <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-              </li>
+            
             
           </ul>
         </div>
@@ -81,22 +73,116 @@
         </div> 
       </div>
     </header>
+    <section id='tezosLand'>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <table class='table table-hover table-bordered table-striped'>
+                      <thead>
+                        <th>
+                            Tezos Price in USD:  
+                        </th>
+                        <th>
+                            Tezos Price in BTC:
+                        </th>
+                      </thead>
+                      <tbody>
+                          <tr>
+                           <td>
+                              $<span id='price_usd'></span> 
+                           </td>  
+                           <td>
+                              <span id='price_btc'></span> 
+                           </td> 
+                            </tr>
+                      </tbody>
+                    
+                    </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 offset-md-3 text-center">
+                    <a class="text-uppercase text-dark btn-link btn" href='https://tzscan.io/tz1Z1tMai15JWUWeN2PKL9faXXVPMuWamzJj'>
+                      Visit to Our Baking Service on TzScan.IO
+                      </a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 ">
+              
+              
+                  <div class="card bg-light">
+                    <div class="card-header text-uppercase text-center">Tezos Land DELEGATION ADDRESS</div>
+                    <div class="card-body  ">
+                      <p class="card-text text-center text-danger"> <span style="font-size:xx-large">tz1Z1tMai15JWUWeN2PKL9faXXVPMuWamzJj
+                        </span> </p>
+                    </div>
+                  </div>
+              
+                  <div>
+              
+                    <a target="_blank" class="btn-link btn" href='https://www.youtube.com/watch?v=eD-y1cEwB94'>
+                      Importing a fundraiser wallet
+                    </a>
+                    <a target="_blank" class="btn-link btn" href='https://www.youtube.com/watch?v=C6-lEA3HAec'>
+                      How to delegate your Tez using Galleon wallet.
+                    </a>
+                  </div>
+              
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12 text-center"> 
+                    <table class='table table-bordered table-sm'>
+                      <tbody>
+                        <tr>
+                            <td class="table-dark">
+                              TezosLand Security Deposit Balance
+                          </td>
+                          <td>
+                              <span id='Balance'></span> XTZ   ($<span id='BalanceUSD'></span>)
+                          </td>
+                        </tr>
+                        <tr>
+                            <td class="table-dark">
+                                Total Delegated Tezos
+                            </td>
+                            <td>
+                                <span id='DelegatedTezos'></span> XTZ   ($<span id='DelegatedTezosUSD'></span>) 
+                            </td>
+                          </tr>
+                          <tr>
+                              <td class="table-dark">
+                                  TezosLand Baking Rewards Distribution
+                              </td>
+                              <td>
+                                  <span>95.5%</span> rewards to YOU  <br>  <span>4.5%</span> for baking fee   
+                              </td>
+                            </tr>
+
+                      </tbody>
     
-    
-	<section class="bg-info" id="tezosLand">
-      <div class="container">
+                    </table>
+                  </div>
+                </div>
+         
         <div class="row">
-          <div class="col-lg-8 mx-auto text-center">
-            <h2 class="section-heading text-white">Tezos Land Delegation Address</h2>
-            <hr class="light my-4">
-            <p><input type="text" class="text-dark mb-4 text-monospace font-weight-bold" value="tz1Z1tMai15JWUWeN2PKL9faXXVPMuWamzJj" readonly="true" onselect="document.execCommand('copy');$('#copyp').show()" style="border: none; background: transparent;border-color: transparent;color: #000000;" size="36"></input></p>
-			<p id="copyp" class="text-primary" style="display: none;">Copied!</p>
-			
-            <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Questions?</a>
+            <div class="col-md-12 text-center">
+                <a class="text-dark " href="mailto:support@tezosland.com">CONTACT US FOR ANY QUESTIONS OR CONCERNS ABOUT OUR BAKING SERVICE</a>
+            </div>
           </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <a class="text-dark " href="mailto:support@tezosland.com?subject=Slack Invitation Request&body=Please send me an invite link.">Join our slack community, Send email to get invitation</a>
+            </div>
+          </div>
+       
+       
+     
+       
         </div>
-      </div>
     </section>
+    
 
          
   
@@ -142,22 +228,7 @@
     
     </section>
 
-	
-	<section class="bg-secondary" id="stats">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto text-center">
-            <h2 class="section-heading text-dark">Stats and Information</h2>
-            <hr class="light my-4">
-            <span class="text-dark mb-4 text-monospace font-weight-bold">TezosLand Security Deposit Balance XTZ</span><p id='BalanceUSD'></p>
-			<span class="text-dark mb-4 text-monospace font-weight-bold">Total Delegated Tezos</span><p id='DelegatedTezosUSD'></p>
-			<span class="text-dark mb-4 text-monospace font-weight-bold">TezosLand Baking Rewards Distribution</span> <p>95.5% rewards to YOU; 4.5% for baking fee</p>  
-			<span class="text-dark mb-4 text-monospace font-weight-bold">For More Information</span> <p><a target="blank" class="text-dark" href="https://tzscan.io/tz1Z1tMai15JWUWeN2PKL9faXXVPMuWamzJj"> Visit to Our Baking Service on TzScan.IO </a></p>  
-          </div>
-        </div>
-      </div>
-    </section>
-	
+
     <section id="FAQ">
         <div class="container">
           <div class="row">
@@ -237,71 +308,50 @@
                     <div class="timeline-image">
                         <a class="nav-link js-scroll-trigger" href="#tezosLand"> <img class=" img-fluid" src="img/about/delegate.png" alt=""></a>
                       </div>
+                      
+                  
                 </li>
               </ul>
             </div>
           </div>
         </div>
       </section>
-	
-	<section id="contact">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto text-center">
-            <h2 class="section-heading">Let's Get In Touch!</h2>
-            <hr class="my-4">
-            <p class="mb-5">Do you need more information ? We are here to answer! Use one of the channels to reach us!</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-3 ml-auto text-center">
-            <i class="fab fa-twitter fa-3x mb-3 sr-contact-1" style="visibility: visible;"></i>
-            <p><a href="https://twitter.com/LandTezos" target="_blank" class="text-dark">Twitter</a></p>
-          </div>
-		  <div class="col-lg-3 ml-auto text-center">
-            <i class="fab fa-slack-hash fa-3x mb-3 sr-contact-1" style="visibility: visible;"></i>
-            <p>
-			<a href="mailto:support@tezosland.com?subject=Slack Invitation Request&amp;body=Please send me an invite link." class="text-dark">Slack Invite</a>
-			</p>
-          </div>
-          <div class="col-lg-3 mr-auto text-center">
-            <i class="fas fa-envelope fa-3x mb-3 sr-contact-2" style="visibility: visible;"></i>
-            <p>
-              <a href="mailto:support@tezosland.com" class="text-dark">support@tezosland.com</a>
-            </p>
-          </div>
-		  
-		   <div class="col-lg-3 mr-auto text-center">
-            <i class="fab fa-reddit-alien fa-3x mb-3 sr-contact-2" style="visibility: visible;"></i>
-            <p>
-              <a href="https://www.reddit.com/user/TezosLand" class="text-dark" target="_blank">Reddit</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+
   
 
     <!-- Footer -->
-    <footer class="bg-dark">
+    <footer>
       <div class="container">
         <div class="row">
-          <div class="col-md-4">
-            <span class="text-light">Copyright © Tezosland.com 2018</span>
+          <div class="col-md-2">
+            <a target="_blank" class="text-dark" href='https://tzscan.io/tz1Z1tMai15JWUWeN2PKL9faXXVPMuWamzJj?default=rewards'>Tezos Land Rewards </a>      
           </div>
-          <div class="col-md-4">
-            <ul class="list-inline social-buttons">
-            </ul>
+          <div class="col-md-2">
+              <a target="_blank" class="text-dark"  href='https://tzscan.io/tz1Z1tMai15JWUWeN2PKL9faXXVPMuWamzJj?default=baking'> Tezos Land Baking </a>    
+            </div>
+  
+
+          <div class="col-md-1">
+              <a target="_blank" class="text-dark"  href='https://tzscan.io'>
+                  TzScan.IO
+              </a>
           </div>
-          <div class="col-md-4">
-            <ul class="list-inline quicklinks">
-              <li class="list-inline-item">
-                <a href="privacy_policy.html" target="_blank">Privacy Policy</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="terms.html" target="_blank">Terms of Use</a>
-              </li>
-            </ul>
+          <div class="col-md-2">
+              <a target="_blank" class="text-dark"  href='https://tezos.foundation/'>
+                 Tezos Foundation
+              </a>
+          </div>
+          <div class="col-md-2">
+        
+              <a target="_blank" class="text-dark"  href='https://reddit.com/r/tezos'>
+                 Reddit
+              </a>
+              <a target="_blank" class="text-dark"  href='https://twitter.com/TezosFoundation'>
+                Twitter
+             </a>
+             <a target="_blank" class="text-dark"  href='https://www.youtube.com/channel/UCMeXYClRGsIfqS_sqMeolqQ'>
+              Youtube
+           </a>
           </div>
         </div>
       </div>
@@ -322,7 +372,7 @@
     <script src="js/contact_me.js"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="js/agency.js"></script>
+    <script src="js/agency.min.js"></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127424289-1"></script>
