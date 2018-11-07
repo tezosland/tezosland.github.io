@@ -51,6 +51,7 @@ $(document).ready(function () {
     }
 
     var accountDetailsApiUrl = 'https://api1.tzscan.io/v1/node_account/' + DELEGATION_ADDRESS;
+    var bondsApiUrl = 'https://api4.tzscan.io/v1/bonds_rewards/' + DELEGATION_ADDRESS;
 
     console.log(accountDetailsApiUrl);
 
@@ -69,6 +70,8 @@ $(document).ready(function () {
     catch (err) {
         console.log(err.message);
     }
+	
+	
 
     function GetNodeDetailData() {
         $.getJSON('https://api1.tzscan.io/v1/marketcap', function (data) {
@@ -81,7 +84,7 @@ $(document).ready(function () {
             $.getJSON(accountDetailsApiUrl, function (data) {
                 console.log(data);
                 var balance = data.balance / 1000000;
-                var totalCapacity = balance * 12;
+               
                 $("#Balance").text(formatNumber(parseFloat(balance).toFixed(fixedRounding)));
                 $("#BalanceUSD").text(formatNumber(parseFloat(price_usd * balance).toFixed(fixedRounding)));
 
@@ -94,7 +97,31 @@ $(document).ready(function () {
                     $("#DelegatedTezosUSD").text(formatNumber(parseFloat(delegatedBalance * price_usd).toFixed(fixedRounding)));
                     //   $("#AvailableCapacity").text(parseFloat(totalCapacity-staking_balance).toFixed(fixedRounding));
 
-
+					// {"block_rewards":160000000,"block_deposits":"3376000000","block_acc_fees":0,"endorsements_rewards":599000000,"endorsement_deposits":"12494000000"}
+					$.getJSON(bondsApiUrl, function (data) {
+						console.log(data);
+						var reserved_balance = parseInt(data.block_rewards)+parseInt(data.block_deposits)+parseInt(data.block_acc_fees)+parseInt(data.endorsements_rewards)+parseInt(data.endorsement_deposits);
+						var reserved_balance = reserved_balance / 1000000;
+						var total_balance = reserved_balance+balance;
+						var totalCapacity = total_balance * 9.6;
+						var capacity_usage = 100 * totalCapacity / staking_balance;
+						capacity_usage = capacity_usage.toFixed(2)
+						
+						var controlButton = $('#capacityBar');
+						controlButton.progressSet(capacity_usage);
+						controlButton.attr({'data-loading':'Capacity Usage: %perc%%'.replace('%perc%',capacity_usage)})
+						
+						if(capacity_usage>95){
+							$("#underdel").hide();
+							$("#overdel").show();
+						}else if (capacity_usage>80){
+							$("#remcapdiv").show();
+							$("#remcap").text("Available capacity is %tez% tz".replace('%tez%',(totalCapacity-staking_balance).toFixed(2)));
+						}
+						return false;
+					});
+					
+					
                     return false;
                 });
                 return false;
@@ -159,7 +186,6 @@ $(document).ready(function () {
 
 
     }
-
 
 });
 
