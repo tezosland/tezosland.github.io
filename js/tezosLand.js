@@ -104,7 +104,7 @@ $(document).ready(function () {
 						var reserved_balance = reserved_balance / 1000000;
 						var total_balance = reserved_balance+balance;
 						var totalCapacity = total_balance * 9.6;
-						var capacity_usage = 100 * totalCapacity / staking_balance;
+						var capacity_usage = 100 * staking_balance/totalCapacity;
 						capacity_usage = capacity_usage.toFixed(2)
 						
 						var controlButton = $('#capacityBar');
