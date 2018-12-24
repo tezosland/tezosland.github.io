@@ -103,7 +103,7 @@ $(document).ready(function () {
 						var reserved_balance = parseInt(data.block_rewards)+parseInt(data.block_deposits)+parseInt(data.block_acc_fees)+parseInt(data.endorsements_rewards)+parseInt(data.endorsement_deposits);
 						var reserved_balance = reserved_balance / 1000000;
 						var total_balance = reserved_balance+balance;
-						var totalCapacity = total_balance * 8.8;
+						var totalCapacity = total_balance * 7.6;
 						var capacity_usage = 100 * staking_balance/totalCapacity;
 						capacity_usage = capacity_usage.toFixed(2)
 						
