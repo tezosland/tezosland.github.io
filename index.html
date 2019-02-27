@@ -332,35 +332,52 @@
   
      
             <script id="delegatorRewardsWithDetailsTemplateHtml" type="text/template">
-              <table class="table table-bordered table-hover ">
-                  <thead class="thead-dark">
-                     <tr>
-                        <th>Cycle</th>
-                        <th>Estimated reward</th>
-                        <th>Delegated amount</th>
-                        <th>Status</th>
-                     </tr>
-                  </thead>
-                  <tbody>
-  
-                      {{#delegatorRewards}}
-                          <tr class="{{rowStyleClass}}">
-                              <td>{{cycle}}</td>
-                              <td>{{formattedRewards}} ꜩ</td>
-                              <td>{{formattedBalance}} ꜩ</td>
-                              <td >{{formattedStatus}}</td>
-                           </tr>
-                        {{/delegatorRewards}}
-                    </tbody>
-                    <tfoot>
-                       <tr>
-                          <td>Total:</td>
-                          <td>{{totalRewards}} ꜩ</td>
-                       </tr>
-                    </tfoot>
-                 </table>
+             
                  
-                
+                    {{#IsOurDelegator}}
+
+                    <table class="table table-bordered table-hover ">
+                        <thead class="thead-dark">
+                           <tr>
+                              <th>Cycle</th>
+                              <th>Estimated reward</th>
+                              <th>Delegated amount</th>
+                              <th>Status</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+        
+                            {{#delegatorRewards}}
+      
+                        
+                            <tr class="{{rowStyleClass}}">
+                                <td>{{cycle}}</td>
+                                <td>{{formattedRewards}} ꜩ</td>
+                                <td>{{formattedBalance}} ꜩ</td>
+                                <td >{{formattedStatus}}</td>
+                             </tr>    
+                    
+      
+                               
+                              {{/delegatorRewards}}
+                          </tbody>
+                   
+                          <tfoot>
+                             <tr>
+                                <td>Total:</td>
+                                <td>{{totalRewards}} ꜩ</td>
+                             </tr>
+                          </tfoot>
+                         
+                       </table>
+
+                       
+                     <span class="text-dark mb-4 text-monospace font-weight-bold"> THANK YOU WORKING WITH US.</span>
+                     {{/IsOurDelegator}}
+
+                    {{^IsOurDelegator}}
+                    <span class="text-dark mb-4 text-monospace font-weight-bold"> YOU ARE NOT ONE OF OUR DELEGATOR.</span>
+                    {{/IsOurDelegator}}
   
   
               </script>

@@ -144,17 +144,24 @@ $(document).ready(function () {
 
     function GetDelegatorRewardsWithDetails(delegatorAddress){
         var template = $('#delegatorRewardsWithDetailsTemplateHtml').html();
+        delegatorAddress=delegatorAddress.trim();
       console.log(delegatorAddress);
+      var IsOurDelegator=true;
         var delegator_rewards_with_details = 'https://api2.tzscan.io/v1/delegator_rewards_with_details/' + delegatorAddress + '?p=0&number=200'
         $.getJSON(delegator_rewards_with_details, function (data) {
      
             var totalRewards=0;
             var delegatorRewardsList = new Array();
             $.each(data, function (index, value) {
-                 
+                IsOurDelegator = value.delegate.tz === DELEGATION_ADDRESS;
+                data[index].IsOurDelegator=IsOurDelegator;
+
+
                  var addressBalance = value.balance / 1000000;
                  var formattedBalance = formatNumber(parseFloat(addressBalance).toFixed(2));
+
                  data[index].formattedBalance=formattedBalance;
+               
 
                  var addressrewards = (value.balance / value.staking_balance) * (value.rewards / 1000000);
                  addressrewards=addressrewards/100 * 95.5;
@@ -191,7 +198,7 @@ $(document).ready(function () {
                 data[index].rowStyleClass = rowStyleClass;
 
             });
-            var renderedHtml = Mustache.to_html(template, { delegatorRewards:data, totalRewards:totalRewards});
+            var renderedHtml = Mustache.to_html(template, { delegatorRewards:data, totalRewards:totalRewards,IsOurDelegator:IsOurDelegator});
 
 
             $('#delegatorRewardsWithDetailsResultHtml').empty();
