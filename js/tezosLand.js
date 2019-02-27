@@ -103,12 +103,76 @@ $(document).ready(function () {
             return false;
         });
         try {
-            GetEachDelegatedAccountDetail();
+        //    GetEachDelegatedAccountDetail();
         }
         catch (err) {
             console.log(err.message);
         }
     }
+//https://api2.tzscan.io/v1/delegator_rewards_with_details/KT1PEZ91VnphKodWSfuvCcjXrA29zfHsgUxt?p=0&number=100
+
+    $("#DelegatorRewardsBtn").click(function() {
+         GetDelegatorRewardsWithDetails($("#DelegatorRewardsAddress").val());
+    });
+
+    function GetDelegatorRewardsWithDetails(delegatorAddress){
+        var template = $('#delegatorRewardsWithDetailsTemplateHtml').html();
+      console.log(delegatorAddress);
+        var delegator_rewards_with_details = 'https://api2.tzscan.io/v1/delegator_rewards_with_details/' + delegatorAddress + '?p=0&number=200'
+        $.getJSON(delegator_rewards_with_details, function (data) {
+     
+            var totalRewards=0;
+            var delegatorRewardsList = new Array();
+            $.each(data, function (index, value) {
+                 
+                 var addressBalance = value.balance / 1000000;
+                 var formattedBalance = formatNumber(parseFloat(addressBalance).toFixed(2));
+                 data[index].formattedBalance=formattedBalance;
+
+                 var addressrewards = (value.balance / value.staking_balance) * (value.rewards / 1000000);
+                 addressrewards=addressrewards/100 * 95.5;
+
+                 var formattedRewards = formatNumber(parseFloat(addressrewards).toFixed(2));
+                 data[index].formattedRewards=formattedRewards;
+
+                 totalRewards+=addressrewards;
+
+                 var formattedStatus="";
+                 if(value.status.status === "cycle_pending"){
+                    formattedStatus="Cycle Pending";
+                 }else if(value.status.status === "cycle_in_progress"){      
+                    formattedStatus="Cycle In Progress";
+                }else if(value.status.status === "rewards_pending"){  
+                    formattedStatus="Rewards Pending";
+                }else if(value.status.status === "rewards_delivered"){  
+                    formattedStatus="Rewards Delivered";
+                }
+
+                 data[index].formattedStatus = formattedStatus;
+
+
+                 var rowStyleClass="";
+                 if(value.status.status === "cycle_pending"){
+                    rowStyleClass="table-secondary";
+                 }else if(value.status.status === "cycle_in_progress"){      
+                    rowStyleClass="table-info";
+                }else if(value.status.status === "rewards_pending"){  
+                    rowStyleClass="table-warning";
+                }else if(value.status.status === "rewards_delivered"){  
+                    rowStyleClass="table-success";
+                }
+                data[index].rowStyleClass = rowStyleClass;
+
+            });
+            var renderedHtml = Mustache.to_html(template, { delegatorRewards:data, totalRewards:totalRewards});
+
+
+            $('#delegatorRewardsWithDetailsResultHtml').empty();
+            $('#delegatorRewardsWithDetailsResultHtml').html(renderedHtml);
+        });
+    }
+
+
 
     function GetEachDelegatedAccountDetail() {
 

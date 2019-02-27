@@ -65,7 +65,10 @@
             <li class="nav-item">
                 <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
               </li>
-            
+              <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#DelegatorRewardsSection">Rewards</a>
+                </li>
+
           </ul>
         </div>
       </div>
@@ -101,9 +104,6 @@
                     </div>
               </div>
            </p>
-               
-
-           
       
               <p id="copyp" class="text-primary" style="display: none;">Copied!</p>
 			
@@ -112,14 +112,16 @@
         </div>
       </div>
     </section>
-
-         
   
  
 
     <script id="personDelegatedAccountDetail" type="text/template">
       {{#people}}<b>TzAddress:{{TzAddress}} </b>  TzAddressBalance: {{TzAddressBalance}} <br> {{/people}}
       </script>
+
+
+
+
 
     <!-- Services -->
     <section id="services">
@@ -165,12 +167,17 @@
             <h2 class="section-heading text-dark">Stats and Information</h2>
             <hr class="light my-4">
             <span class="text-dark mb-4 text-monospace font-weight-bold">TezosLand Security Deposit Balance XTZ</span><p><span id='Balance'></span>&nbsp;($<span id='BalanceUSD'></span>)</p>
-			<span class="text-dark mb-4 text-monospace font-weight-bold">Total Delegated Tezos</span><p><span id='DelegatedTezos'></span> &nbsp;($<span id='DelegatedTezosUSD'></span>)</p>
-			<span class="text-dark mb-4 text-monospace font-weight-bold">TezosLand Baking Rewards Distribution</span> <p>95.5% rewards to YOU; 4.5% for baking fee</p>  
-			<span class="text-dark mb-4 text-monospace font-weight-bold">For More Information</span> <p><a target="blank" class="text-dark" href="https://tzscan.io/tz1Z1tMai15JWUWeN2PKL9faXXVPMuWamzJj"> Visit to Our Baking Service on TzScan.IO </a></p>  
-          </div>
+          <span class="text-dark mb-4 text-monospace font-weight-bold">Total Delegated Tezos</span><p><span id='DelegatedTezos'></span> &nbsp;($<span id='DelegatedTezosUSD'></span>)</p>
+          <span class="text-dark mb-4 text-monospace font-weight-bold">TezosLand Baking Rewards Distribution</span> <p>95.5% rewards to YOU; 4.5% for baking fee</p>  
+          <span class="text-dark mb-4 text-monospace font-weight-bold">For More Information</span> <p><a target="blank" class="text-dark" href="https://tzscan.io/tz1Z1tMai15JWUWeN2PKL9faXXVPMuWamzJj"> Visit to Our Baking Service on TzScan.IO </a></p>  
+         </div>
         </div>
-      </div>
+
+         
+        </div>
+     
+            
+   
     </section>
 	
     <section id="FAQ">
@@ -295,6 +302,79 @@
         </div>
       </div>
     </section>
+
+    <section  id="DelegatorRewardsSection">
+        <div class="container">
+          
+           
+  
+
+            <div class="timeline-panel">
+                <div class="timeline-heading">
+                  <h4 class="subheading">  CHECK YOUR DELEGATED REWARDS</h4>
+                </div>
+                <div class="timeline-body">
+                  <p class="text-muted"> Enter your Tezos address here and see your rewards:</p>
+                </div>
+              </div>
+
+              <div class="row">
+                  <div class="col-md-8">
+                      <input type="text" id="DelegatorRewardsAddress"
+                      placeholder="Enter your Tezos address here"
+                      value="KT1PEZ91VnphKodWSfuvCcjXrA29zfHsgUxt"
+                      class="form-control form-control-lg" style="color:rgb(71, 0, 0)" 
+                      readonly="true" /> 
+                  </div>
+                  <div class="col-md-4">
+                      <button class="btn btn-success  btn-block btn-large  js-scroll-trigger" 
+                       style="padding:10px"
+                         id="DelegatorRewardsBtn">Check</button> 
+                    </div>
+              </div>
+  
+     
+            <script id="delegatorRewardsWithDetailsTemplateHtml" type="text/template">
+              <table class="table table-bordered table-hover ">
+                  <thead class="thead-dark">
+                     <tr>
+                        <th>Cycle</th>
+                        <th>Estimated reward</th>
+                        <th>Delegated amount</th>
+                        <th>Status</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+  
+                      {{#delegatorRewards}}
+                          <tr class="{{rowStyleClass}}">
+                              <td>{{cycle}}</td>
+                              <td>{{formattedRewards}} ꜩ</td>
+                              <td>{{formattedBalance}} ꜩ</td>
+                              <td >{{formattedStatus}}</td>
+                           </tr>
+                        {{/delegatorRewards}}
+                    </tbody>
+                    <tfoot>
+                       <tr>
+                          <td>Total:</td>
+                          <td>{{totalRewards}} ꜩ</td>
+                       </tr>
+                    </tfoot>
+                 </table>
+                 
+                
+  
+  
+              </script>
+         
+            <span id="delegatorRewardsWithDetailsResultHtml"></span>
+  
+          </div>
+        </div>
+              
+     
+      </section>
   
 
     <!-- Footer -->
