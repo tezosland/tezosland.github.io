@@ -51,7 +51,7 @@ $(document).ready(function () {
     }
 
     var accountDetailsApiUrl = 'https://api1.tzscan.io/v1/node_account/' + DELEGATION_ADDRESS;
-    var bondsApiUrl = 'https://api4.tzscan.io/v1/bonds_rewards/' + DELEGATION_ADDRESS;
+    var bondsApiUrl = 'https://api1.tzscan.io/v1/bonds_rewards/' + DELEGATION_ADDRESS;
 
     console.log(accountDetailsApiUrl);
 
