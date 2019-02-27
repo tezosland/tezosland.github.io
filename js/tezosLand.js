@@ -146,16 +146,19 @@ $(document).ready(function () {
         var template = $('#delegatorRewardsWithDetailsTemplateHtml').html();
         delegatorAddress=delegatorAddress.trim();
       console.log(delegatorAddress);
-      var IsOurDelegator=true;
+   
         var delegator_rewards_with_details = 'https://api2.tzscan.io/v1/delegator_rewards_with_details/' + delegatorAddress + '?p=0&number=200'
         $.getJSON(delegator_rewards_with_details, function (data) {
-     
+            
             var totalRewards=0;
+            var XtzLandDelegator=false;
             var delegatorRewardsList = new Array();
             $.each(data, function (index, value) {
-                IsOurDelegator = value.delegate.tz === DELEGATION_ADDRESS;
-                data[index].IsOurDelegator=IsOurDelegator;
+                data[index].IsOurDelegatorInThatCycle=value.delegate.tz === DELEGATION_ADDRESS;
 
+                if(data[index].IsOurDelegatorInThatCycle)
+                {
+                 XtzLandDelegator = data[index].IsOurDelegatorInThatCycle;
 
                  var addressBalance = value.balance / 1000000;
                  var formattedBalance = formatNumber(parseFloat(addressBalance).toFixed(2));
@@ -169,36 +172,46 @@ $(document).ready(function () {
                  var formattedRewards = formatNumber(parseFloat(addressrewards).toFixed(2));
                  data[index].formattedRewards=formattedRewards;
 
-                 totalRewards+=addressrewards;
-
-                 var formattedStatus="";
-                 if(value.status.status === "cycle_pending"){
-                    formattedStatus="Cycle Pending";
-                 }else if(value.status.status === "cycle_in_progress"){      
-                    formattedStatus="Cycle In Progress";
-                }else if(value.status.status === "rewards_pending"){  
-                    formattedStatus="Rewards Pending";
-                }else if(value.status.status === "rewards_delivered"){  
-                    formattedStatus="Rewards Delivered";
-                }
-
-                 data[index].formattedStatus = formattedStatus;
+                    totalRewards+=addressrewards;
 
 
-                 var rowStyleClass="";
-                 if(value.status.status === "cycle_pending"){
-                    rowStyleClass="table-secondary";
-                 }else if(value.status.status === "cycle_in_progress"){      
-                    rowStyleClass="table-info";
-                }else if(value.status.status === "rewards_pending"){  
-                    rowStyleClass="table-warning";
-                }else if(value.status.status === "rewards_delivered"){  
-                    rowStyleClass="table-success";
-                }
-                data[index].rowStyleClass = rowStyleClass;
+                    var formattedStatus="";
+                    if(value.status.status === "cycle_pending"){
+                       formattedStatus="Cycle Pending";
+                    }else if(value.status.status === "cycle_in_progress"){      
+                       formattedStatus="Cycle In Progress";
+                   }else if(value.status.status === "rewards_pending"){  
+                       formattedStatus="Rewards Pending";
+                   }else if(value.status.status === "rewards_delivered"){  
+                       formattedStatus="Rewards Delivered";
+                   }
+   
+                    data[index].formattedStatus = formattedStatus;
+   
+   
+                    var rowStyleClass="";
+                    if(value.status.status === "cycle_pending"){
+                       rowStyleClass="table-secondary";
+                    }else if(value.status.status === "cycle_in_progress"){      
+                       rowStyleClass="table-info";
+                   }else if(value.status.status === "rewards_pending"){  
+                       rowStyleClass="table-warning";
+                   }else if(value.status.status === "rewards_delivered"){  
+                       rowStyleClass="table-success";
+                   }
+                   data[index].rowStyleClass = rowStyleClass;
+                 }
 
             });
-            var renderedHtml = Mustache.to_html(template, { delegatorRewards:data, totalRewards:totalRewards,IsOurDelegator:IsOurDelegator});
+
+             
+            var renderedHtml = Mustache.to_html(
+                template, 
+                {
+                 delegatorRewards:data,
+                 totalRewards:totalRewards,
+                 XtzLandDelegator:XtzLandDelegator}
+                 );
 
 
             $('#delegatorRewardsWithDetailsResultHtml').empty();

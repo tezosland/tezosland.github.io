@@ -334,7 +334,8 @@
             <script id="delegatorRewardsWithDetailsTemplateHtml" type="text/template">
              
                  
-                    {{#IsOurDelegator}}
+                 
+               {{#XtzLandDelegator}}
 
                     <table class="table table-bordered table-hover ">
                         <thead class="thead-dark">
@@ -349,7 +350,7 @@
         
                             {{#delegatorRewards}}
       
-                        
+                            {{#IsOurDelegatorInThatCycle}}
                             <tr class="{{rowStyleClass}}">
                                 <td>{{cycle}}</td>
                                 <td>{{formattedRewards}} ꜩ</td>
@@ -357,7 +358,7 @@
                                 <td >{{formattedStatus}}</td>
                              </tr>    
                     
-      
+                             {{/IsOurDelegatorInThatCycle}}
                                
                               {{/delegatorRewards}}
                           </tbody>
@@ -372,12 +373,13 @@
                        </table>
 
                        
+             
                      <span class="text-dark mb-4 text-monospace font-weight-bold"> THANK YOU WORKING WITH US.</span>
-                     {{/IsOurDelegator}}
+                     {{/XtzLandDelegator}}
 
-                    {{^IsOurDelegator}}
+                    {{^XtzLandDelegator}}
                     <span class="text-dark mb-4 text-monospace font-weight-bold"> YOU ARE NOT ONE OF OUR DELEGATOR.</span>
-                    {{/IsOurDelegator}}
+                    {{/XtzLandDelegator}}
   
   
               </script>
