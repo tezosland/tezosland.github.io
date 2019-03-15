@@ -43,8 +43,8 @@ $(document).ready(function(){
     });
 
     // Custom progress handling
-
-
+	
+	var controlButton = $('#capacityBar');
     controlButton.click(function(e){
         e.preventDefault();
 
