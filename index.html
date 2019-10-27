@@ -176,8 +176,7 @@
         <span class="text-dark mb-4 text-monospace font-weight-bold">TezosLand Baking Rewards Distribution</span> <p>95.5% rewards to YOU; 4.5% for baking fee</p>  
         <br/>
         <h4 class="text-dark mb-4 text-monospace font-weight-bold">For More Information</h4> 
-        <p><a target="blank" class="text-dark" href="https://tzscan.io/tz1Z1tMai15JWUWeN2PKL9faXXVPMuWamzJj"> Visit to Our Baking Service on TzScan.IO </a></p>  
-        <p><a target="blank" class="text-dark" href="https://tzscan.io/tz1aZoYGSEoGpzWmitPaCJw6HQCkz5YSi1ow"> Visit to Our Payment Address on TzScan.IO </a></p>  
+        <p><a target="blank" class="text-dark" href="https://mvp.tezblock.io/account/tz1Z1tMai15JWUWeN2PKL9faXXVPMuWamzJj"> Visit to Our Baking Service on TzScan.IO </a></p>  
             </div>
           </div>
         </div>
@@ -286,7 +285,7 @@
           <div class="col-lg-4 mr-auto text-center">
             <i class="fas fa-envelope fa-3x mb-3 sr-contact-2" style="visibility: visible;"></i>
             <p>
-              <a href="mailto:support@tezosland.com" class="text-dark">support@tezosland.com</a>
+              <a href="mailto:tezosland@gmail.com" class="text-dark">Tezosland Support</a>
             </p>
           </div>
 		  
@@ -300,97 +299,6 @@
       </div>
     </section>
 
-    <section  id="DelegatorRewardsSection">
-        <div class="container">
-          
-           
-  
-
-            <div class="timeline-panel">
-                <div class="timeline-heading">
-                  <h4 class="subheading">  CHECK YOUR DELEGATED REWARDS</h4>
-                </div>
-                <div class="timeline-body">
-                  <p class="text-muted"> Enter your Tezos address here and see your rewards:</p>
-                </div>
-              </div>
-
-              <div class="row">
-                  <div class="col-md-8">
-                      <input type="text" id="DelegatorRewardsAddress"
-                      placeholder="Enter your Tezos address here"
-                    
-                      class="form-control form-control-lg" style="color:rgb(71, 0, 0)" 
-                       /> 
-                  </div>
-                  <div class="col-md-4">
-                      <button class="btn btn-success  btn-block btn-large  js-scroll-trigger" 
-                       style="padding:10px"
-                         id="DelegatorRewardsBtn">Check</button> 
-                    </div>
-              </div>
-  
-     
-            <script id="delegatorRewardsWithDetailsTemplateHtml" type="text/template">
-             
-                 
-                 
-               {{#XtzLandDelegator}}
-
-                    <table class="table table-bordered table-hover ">
-                        <thead class="thead-dark">
-                           <tr>
-                              <th>Cycle</th>
-                              <th>Estimated reward</th>
-                              <th>Delegated amount</th>
-                              <th>Status</th>
-                           </tr>
-                        </thead>
-                        <tbody>
-        
-                            {{#delegatorRewards}}
-      
-                            {{#IsOurDelegatorInThatCycle}}
-                            <tr class="{{rowStyleClass}}">
-                                <td>{{cycle}}</td>
-                                <td>{{formattedRewards}} ꜩ</td>
-                                <td>{{formattedBalance}} ꜩ</td>
-                                <td >{{formattedStatus}}</td>
-                             </tr>    
-                    
-                             {{/IsOurDelegatorInThatCycle}}
-                               
-                              {{/delegatorRewards}}
-                          </tbody>
-                   
-                          <tfoot>
-                             <tr>
-                                <td>Total:</td>
-                                <td>{{totalRewards}} ꜩ</td>
-                             </tr>
-                          </tfoot>
-                         
-                       </table>
-
-                       
-             
-                     <span class="text-dark mb-4 text-monospace font-weight-bold"> THANK YOU WORKING WITH US.</span>
-                     {{/XtzLandDelegator}}
-
-                    {{^XtzLandDelegator}}
-                    <span class="text-dark mb-4 text-monospace font-weight-bold"> YOU ARE NOT ONE OF OUR DELEGATOR.</span>
-                    {{/XtzLandDelegator}}
-  
-  
-              </script>
-         
-            <span id="delegatorRewardsWithDetailsResultHtml"></span>
-  
-          </div>
-        </div>
-              
-     
-      </section>
   
 
     <!-- Footer -->
